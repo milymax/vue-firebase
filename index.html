@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gmedia</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      /* .box {
+        background: #ddd;
+        margin: 20px;
+        padding: 100px 0;
+        text-align: center;
+        width: 400px;
+        border: 1px solid #ddd;
+        display: block;
+      } */
+      body {
+        background: #eee;
+        max-width: 960px;
+        margin: 20px auto;
+        font-family: sans-serif;
+      }
+      img {
+        width: 10%;
+      }
+      p, h3, ul{
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style-type: none;
+        background: #fff;
+        padding: 10px auto;
+        margin: 20px auto;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      li.fav{
+        background: cyan !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Gmedia</h1>
+    <div id="app">
+      <div v-if="showBio">
+        <p>{{ alamat }} - <a v-bind:href="website">{{ website }}</a></p>
+        <ul>
+          <li v-for="item in myBio" :class="{ fav: item.isFav}" @dblclick:"toogleFavBooks" v-if:="mybio" v-else:="!myBio">
+            <div>
+            <h3>Judul :{{ item.title }}</h1>
+            <p>author : {{ item.author }}</p>
+            </div>
+            <img :src="item.img" :alt="item.title">
+            <br>
+            <a :href="item.url">{{ item.url }}</a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- <div>
+        <button v-on:click="age++">tambah umur</button>
+        <button @click="age--">kurangi umur</button>
+        <br>
+        <button @click="toogleShowBooks">
+          <span v-if="showBio">tutup bio</span>
+          <span v-else="showBio">tampilkan bio</span>
+        </button>
+        <span v-show="showBio"> ea bionya tampil</span>
+      </div> -->
+        
+
+      <!-- <div class="box" @mouseover="handleEvent($event, )">mouseover (enter)</div>
+      <div class="box" @mouseleave="handleEvent">mouseleave</div>
+      <div class="box" @dblclick="handleEvent">doubleclick</div>
+      <div class="box" @mousemove="handleMouseMove">Position - {{ x }} - {{ y }}</div> -->
+
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>
