@@ -3,14 +3,14 @@ console.log("Hello, Vue!")
 const app = Vue.createApp({
     data() {
         return {
-            showBio: true,
+            showBooks: true,
             alamat: "Jl. Ahmad Yani No.12",
             website: "www.gmedia.com",
             title: "",
             author: "",
             x: 0,
             y: 0,
-            myBio: [
+            books: [
                 { title: "pulang", author: "tere liye", img: "assets/1.jpeg", url: "https://google.com", isFav: true },
                 { title: "bulan", author: "tere liye", img: "assets/2.jpeg", url: "https://gramedia.com", isFav: false },
                 { title: "hujan", author: "tere liye", img: "assets/3.jpeg", url: "https://gmedia.com", isFav: true },
@@ -18,8 +18,8 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        toogleShowBooks() {
-            this.showBio = !this.showBio
+        toggleShowBooks() {
+            this.showBooks = !this.showBooks
         },
         handleEvent(e, data) {
             console.log(e, e.type)
@@ -31,8 +31,13 @@ const app = Vue.createApp({
             this.x = e.offsetX
             this.y = e.offsetY
         },
-        toogleFavBooks() {
-            this.myBio = !this.myBio
+        toggleFav(book) {
+            book.isFav = !book.isFav
+        },
+    },
+    computed: {
+        filteredBooks() {
+            return this.books.filter((book) => book.isFav)
         }
     }
 })
